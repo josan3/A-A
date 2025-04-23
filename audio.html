@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Reproducir Audio</title>
+  <style>
+    h1 {
+      font-size: 5em;
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      font-size: 1.5em;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>Haz clic para escuchar</h1>
-  <button onclick="reproducirAudio()">▶ Reproducir</button>
+  <h1>Hola</h1>
 
-  <audio id="miAudio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
-
-  <script>
-    function reproducirAudio() {
-      const audio = document.getElementById("miAudio");
-      audio.play();
-    }
-  </script>
 </body>
 </html>
