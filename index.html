@@ -43,30 +43,32 @@
       }
     }
 
+    /* Definimos el avión */
     .avion {
       position: absolute;
-      top: -30px;  /* Ajustamos su posición */
+      font-size: 2.5em;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
-      font-size: 2em;
-      animation: vuelo 6s infinite linear;
+      transform: translate(-50%, -50%);
+      animation: vueloInfinito 6s linear infinite;
     }
 
-    @keyframes vuelo {
+    /* Animación de vuelo en forma de infinito */
+    @keyframes vueloInfinito {
       0% {
-        transform: rotate(0deg) translateX(100px) rotate(0deg);
+        transform: translate(-50%, -50%) rotate(0deg) translateX(150px) rotate(0deg);
       }
       25% {
-        transform: rotate(90deg) translateX(100px) rotate(90deg);
+        transform: translate(-50%, -50%) rotate(90deg) translateX(150px) rotate(90deg);
       }
       50% {
-        transform: rotate(180deg) translateX(100px) rotate(180deg);
+        transform: translate(-50%, -50%) rotate(180deg) translateX(150px) rotate(180deg);
       }
       75% {
-        transform: rotate(270deg) translateX(100px) rotate(270deg);
+        transform: translate(-50%, -50%) rotate(270deg) translateX(150px) rotate(270deg);
       }
       100% {
-        transform: rotate(360deg) translateX(100px) rotate(360deg);
+        transform: translate(-50%, -50%) rotate(360deg) translateX(150px) rotate(360deg);
       }
     }
   </style>
