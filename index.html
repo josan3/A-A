@@ -17,10 +17,7 @@
       align-items: center;
       height: 100vh;
       text-align: center;
-      background-image: url('https://www.transparenttextures.com/patterns/flower-dots.png');
-      background-repeat: no-repeat;
-      background-size: 200px;
-      background-position: center;
+      overflow: hidden;
     }
 
     h1 {
@@ -42,32 +39,72 @@
       }
     }
 
-    .avion {
+    .avion-container {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 40px;
-      height: auto;
+      width: 0;
+      height: 0;
       transform: translate(-50%, -50%);
-      animation: vueloOcho 5s linear infinite;
+      animation: vueloOchoCircular 8s linear infinite;
     }
 
-    @keyframes vueloOcho {
-      0%   { transform: translate(-50%, -50%) translateX(0) translateY(0); }
-      12.5%{ transform: translate(-50%, -50%) translateX(40px) translateY(-30px); }
-      25%  { transform: translate(-50%, -50%) translateX(80px) translateY(0); }
-      37.5%{ transform: translate(-50%, -50%) translateX(40px) translateY(30px); }
-      50%  { transform: translate(-50%, -50%) translateX(0) translateY(0); }
-      62.5%{ transform: translate(-50%, -50%) translateX(-40px) translateY(-30px); }
-      75%  { transform: translate(-50%, -50%) translateX(-80px) translateY(0); }
-      87.5%{ transform: translate(-50%, -50%) translateX(-40px) translateY(30px); }
-      100% { transform: translate(-50%, -50%) translateX(0) translateY(0); }
+    @keyframes vueloOchoCircular {
+      0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .avion {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40px;
+      transform: rotate(0deg);
+      animation: contrarotar 8s linear infinite;
+    }
+
+    /* Este giro hace que el avión mantenga su orientación mientras se mueve */
+    @keyframes contrarotar {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(-360deg);
+      }
+    }
+
+    .trayectoria {
+      position: absolute;
+      width: 160px;
+      height: 80px;
+      top: 0;
+      left: 0;
+      transform: translate(-80px, -40px);
+      border-radius: 50%;
+      animation: moverEn8 8s linear infinite;
+    }
+
+    @keyframes moverEn8 {
+      0% {
+        transform: translate(-80px, -40px) rotate(0deg);
+      }
+      100% {
+        transform: translate(-80px, -40px) rotate(360deg);
+      }
     }
   </style>
 </head>
 <body>
   <h1>deCadizalMonteFuji
-    <img src="avion.png" alt="Avión" class="avion" />
+    <span class="avion-container">
+      <span class="trayectoria">
+        <img src="avion.png" alt="Avión" class="avion" />
+      </span>
+    </span>
   </h1>
 </body>
 </html>
