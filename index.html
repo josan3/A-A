@@ -46,11 +46,13 @@
 
     .encabezado {
       position: fixed;
+      top: 5vh; /* Esto mantiene el encabezado un poco bajado desde arriba */
+      left: 50%; /* Centrado horizontalmente */
+      transform: translateX(-50%); /* Corrige el desfase para estar perfectamente en el centro */
       z-index: 100;
       text-align: center;
-      padding-top: 5vh;
-      left: 18%;
     }
+
 
     img.logo {
       width: 15vw;
