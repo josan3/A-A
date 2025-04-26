@@ -29,6 +29,7 @@
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
+    height: 100vh;
   }
 
 
@@ -86,8 +87,15 @@
       white-space: normal;
     }
 
+    .container {
+  display: flex;
+  width: 200vw; /* dos secciones de 100vw cada una = 200vw */
+  height: 100vh;
+}
+
+
     .contenido {
-      position: absolute;
+      position: relative;
       z-index: 1;
       max-width: 1000vw;
       max-height: 50vh;
@@ -160,10 +168,9 @@
     <h1>deCádizAlMonteFuji</h1>
   </div>
 
-  <!-- Primera sección -->
-  <div class="seccion">
-
-    <div class="contenido">
+  <div class="container">
+    <div class="seccion">
+      <div class="contenido">
 
       <h2>Life's Journey: From your first steps to your new beginning</h2>
       <br><br>
