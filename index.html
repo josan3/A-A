@@ -5,18 +5,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>deCadizalMonteFuji</title>
+
   <style>
-    * {
-      box-sizing: border-box;
+    /* Primero: definimos las fuentes */
+    @font-face {
+      font-family: 'Vivaldi';
+      src: local('Vivaldi'), url('vivaldi-regular.ttf') format('truetype'); /* asegúrate de tener Vivaldi.ttf en tu proyecto si no es fuente de sistema */
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Garamond';
+      src: local('Garamond'), url('garamond.ttf') format('truetype'); /* asegúrate de tener Vivaldi.ttf en tu proyecto si no es fuente de sistema */
+      font-weight: normal;
+      font-style: normal;
     }
 
     body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Georgia', serif;
-      color: #778c43;
-      overflow: hidden;
-    }
+    margin: 0;
+    padding: 0;
+    font-family: 'Garamond';
+    color: #778c43;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
 
     .fondo {
       position: fixed;
@@ -24,98 +38,160 @@
       left: 40%;
       height: 100%;
       width: auto;
+      object-fit: cover;
       transform: translate(-50%, -50%);
       opacity: 1;
       z-index: 0;
     }
 
     .encabezado {
-      position: relative;
-      z-index: 1;
+      position: absolute;
+      z-index: 100;
       text-align: center;
       padding-top: 5vh;
-    }
-
-    .logo-url {
-      text-align: center;
-      margin-top: 10px;
+      left: 20%;
     }
 
     img.logo {
+      width: 15vw;
+      margin-bottom: 0vh;
+      margin-top: -2vh;
+    }
+
+    img.logofondo {
       width: 20vw;
-      margin-bottom: 2vh;
+      margin-bottom: 0vh;
+      margin-top: 75vh;
+
     }
 
     h1 {
+      font-family: 'Vivaldi';
       font-size: 8vw;
       margin: 0;
       color: #778c43;
+      font-weight: bold;
     }
 
-    .texto-sobre-fondo {
-      position: absolute;
-      top: 60%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
+    .seccion {
+      display: inline-block;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
       text-align: center;
-      font-size: 3vw;
-      color: #445522;
-      background-color: rgba(255, 255, 255, 0.6);
-      padding: 1em 2em;
+      vertical-align: top;
+      overflow: hidden;
+      white-space: normal;
+    }
+
+    .contenido {
+      position: relative;
+      z-index: 1;
+      max-width: 70vw;
+      max-height: 60vh;
+      margin-top: 20vh;
+      margin-left: 5vh;
+      margin-right: 5vh;
+      background-color: rgba(255, 255, 255, 0.5);
+      padding: 2em;
       border-radius: 20px;
+      font-size: 4vw;
+      color: #445522;
       font-style: italic;
+      font-weight: bold;
+      text-align: center;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .contenido h2 {
+      font-size: 5vw; /* un poco más pequeño que el h1 del encabezado */
+      color: #445522;
+      font-family: 'Garamond';
+      font-style: italic;
+      margin-bottom: 1em;
+    }
+
+    .autor {
+      text-align: right;
+      font-style: italic;
+      font-weight: normal;
+      margin-top: 2em;
+    }
+
+    /* Scroll bonito */
+    body::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    body::-webkit-scrollbar-thumb {
+      background-color: #778c43;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
-
-  <!-- Imagen de fondo -->
-  <img src="fondobn.jpg" alt="Fondo decorativo" class="fondo">
-  <!-- Texto sobre la imagen -->
-  <div class="texto-sobre-fondo">
-    "Holaafsgasssssssssdgdsaaaaaaaaaaaa.
-    gsaddddddddddddddddddddddddddsg.
-    agsgas
-    sadf
-    adsff
-    afsfsa
-    fasdd
-    fasddfads
-    af
-    Holaafsgasssssssssdgdsaaaaaaaaaaaa.
-    gsaddddddddddddddddddddddddddsg.
-    agsgas
-    sadf
-    adsff
-    afsfsa
-    fasdd
-    fasddfads
-    af
-    Holaafsgasssssssssdgdsaaaaaaaaaaaa.
-    gsaddddddddddddddddddddddddddsg.
-    agsgas
-    sadf
-    adsff
-    afsfsa
-    fasdd
-    fasddfads
-    af
-    Holaafsgasssssssssdgdsaaaaaaaaaaaa.
-    gsaddddddddddddddddddddddddddsg.
-    agsgas
-    sadf
-    adsff
-    afsfsa
-    fasdd
-    fasddfads
-    af"
-  </div>
-
-  <!-- Encabezado principal -->
+  <img src="fondobn.jpg" alt="Fondo Sección 1" class="fondo">
   <div class="encabezado">
     <img src="AAverde.png" alt="Logo boda" class="logo">
     <h1>deCádizAlMonteFuji</h1>
+    <img src="SCROLLVERDE.png" class="logofondo">
+  </div>
+
+  <!-- Primera sección -->
+  <div class="seccion">
+
+    <div class="contenido">
+
+      <h2>Life's Journey: From your first steps to your new beginning</h2>
+      <br><br>
+      Like many parents, when you were born, we began a journey full of firsts, of shared learning, of hugs that healed and looks that spoke volumes.
+      <br><br>
+      Thanks to that moment I had a new nickname, 'mum', thanks to that moment I discovered a new way of loving, thanks to that moment your father and I started a beautiful family...
+      <br><br>
+      Time, almost without asking permission, went by, and stage after stage, we saw you grow, evolve and dream...
+      <br><br>
+      Until suddenly, you showed us a ring.
+      <br><br>
+      Time stood still. For an instant we didn't know what to say...
+      <br><br>
+      Today, seeing you here, so in love, so determined, so full of illusion, we feel that our pride does not fit in our chest...
+      <br><br>
+      Today you are starting a new stage...
+      <br><br>
+      Finally, I wanted these words to be with you always.
+      <br><br>
+      I want you to listen to me without judging me.
+      <br><br>
+      I want you to express your opinion without imposing me.
+      <br><br>
+      I want you to trust me without demanding me.
+      <br><br>
+      I want you to help me without deciding for me.
+      <br><br>
+      Because true love does not bind, it accompanies. And when it accompanies with the soul, everything flourishes.
+    <br><br>
+      <p class="autor">
+        Ana Solano, bride's mother
+      </p>
+    </div>
+  </div>
+
+  <!-- Segunda sección -->
+  <div class="seccion">
+
+    <div class="contenido">
+      This is the second text that appears after scrolling!
+      <br><br>
+      Here you can tell another part of the story, or write messages from friends and family to the couple.
+      <br><br>
+      New adventures, new dreams, and a lifetime to build together.
+      <br><br>
+      May your love always be your shelter and your adventure.
+      <p class="autor">
+        Another Author
+      </p>
+    </div>
   </div>
 
 </body>
