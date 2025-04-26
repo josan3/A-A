@@ -85,24 +85,25 @@
     }
 
     .contenido {
-      position: relative;
-      z-index: 1;
-      max-width: 80vw;
-      max-height: 60vh;
-      margin-top: 20vh;
-      margin-left: 10vh;
-      margin-right: 10vh;
-      background-color: rgba(255, 255, 255, 0.5);
-      padding: 2em;
-      border-radius: 20px;
-      font-size: 4vw;
-      color: #445522;
-      font-style: italic;
-      font-weight: bold;
-      text-align: center;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
+  position: absolute; /* Cambiamos relative por absolute */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  max-width: 80vw;
+  max-height: 60vh;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 2em;
+  border-radius: 20px;
+  font-size: 4vw;
+  color: #445522;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 
     .contenido h2 {
       font-size: 5vw; /* un poco más pequeño que el h1 del encabezado */
