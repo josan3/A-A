@@ -9,6 +9,7 @@ pipeline {
         stage('Setup Kotlin') {
             steps {
                 sh '''
+                rm -rf kotlin
                 curl -s -L -o kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip
                 unzip -oq kotlin.zip -d kotlin
                 '''
@@ -18,7 +19,7 @@ pipeline {
         stage('Compile Kotlin') {
             steps {
                 sh '''
-                export PATH=$WORKSPACE/kotlin/bin:$PATH
+                export PATH=$WORKSPACE/kotlin/kotlinc/bin:$PATH
                 kotlinc MainApp.kt -include-runtime -d app.jar
                 '''
             }
@@ -27,7 +28,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 sh '''
-                export PATH=$WORKSPACE/kotlin/bin:$PATH
+                export PATH=$WORKSPACE/kotlin/kotlinc/bin:$PATH
                 java -jar app.jar
                 '''
             }
