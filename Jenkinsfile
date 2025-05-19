@@ -1,11 +1,20 @@
 pipeline {
-  agent any
-  stages {
-    stage('Check Docker') {
-      steps {
-        sh 'which docker || echo "Docker no disponible"'
-        sh 'docker --version || echo "Docker no se puede ejecutar"'
-      }
+    agent {
+        docker {
+            image 'gradle:jdk11' // Imagen con Gradle y JDK 11 preinstalados
+            args '-v /root/.gradle' // Para cachear dependencias
+        }
     }
-  }
+    stages {
+        stage('Build and Test') {
+            steps {
+                sh './gradlew clean test'
+            }
+        }
+    }
+    post {
+        always {
+            junit '**/build/test-results/test/*.xml'
+        }
+    }
 }
