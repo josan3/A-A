@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build and Test') {
             steps {
-
+                sh 'chmod +x gradlew'
                 sh './gradlew clean test'
             }
         }
@@ -17,7 +17,7 @@ pipeline {
 
     post {
         always {
-            junit '**/build/test-results/test/*.xml'  // Ruta típica de reportes de test en Gradle
+            junit '**/build/test-results/test/*.xml'
         }
     }
 }
