@@ -10,7 +10,7 @@ pipeline {
             steps {
                 sh '''
                 curl -s -L -o kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip
-                unzip -q kotlin.zip -d kotlin
+                unzip -oq kotlin.zip -d kotlin
                 '''
             }
         }
