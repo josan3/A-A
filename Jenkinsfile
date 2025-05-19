@@ -9,15 +9,15 @@ pipeline {
         }
         stage('Build and Test') {
             steps {
-                bat 'gradlew.bat clean test'
+
+                sh './gradlew clean test'
             }
         }
     }
 
     post {
         always {
-            junit '**\\build\\test-results\\test\\*.xml'
+            junit '**/build/test-results/test/*.xml'  // Ruta típica de reportes de test en Gradle
         }
     }
 }
-
