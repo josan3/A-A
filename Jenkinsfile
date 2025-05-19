@@ -1,16 +1,20 @@
 pipeline {
     agent {
         docker {
-            image 'zenika/kotlin'
+            image 'gradle:jdk11' // Imagen con Gradle y JDK 11 preinstalados
+            args '-v /root/.gradle' // Para cachear dependencias
         }
     }
-
     stages {
-        stage('Compilar y Ejecutar') {
+        stage('Build and Test') {
             steps {
-                sh 'kotlinc errores.kt -include-runtime -d errores.jar'
-                sh 'java -jar errores.jar'
+                sh './gradlew clean test'
             }
+        }
+    }
+    post {
+        always {
+            junit '**/build/test-results/test/*.xml'
         }
     }
 }
