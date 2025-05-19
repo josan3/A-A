@@ -3,8 +3,6 @@ pipeline {
 
     environment {
         KOTLIN_VERSION = '1.9.0'
-        KOTLIN_HOME = "${env.WORKSPACE}/kotlin"
-        PATH = "${env.KOTLIN_HOME}/bin:${env.PATH}"
     }
 
     stages {
@@ -19,13 +17,19 @@ pipeline {
 
         stage('Compile Kotlin') {
             steps {
-                sh 'kotlinc MainApp.kt -include-runtime -d app.jar'
+                sh '''
+                export PATH=$WORKSPACE/kotlin/bin:$PATH
+                kotlinc MainApp.kt -include-runtime -d app.jar
+                '''
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'java -jar app.jar'
+                sh '''
+                export PATH=$WORKSPACE/kotlin/bin:$PATH
+                java -jar app.jar
+                '''
             }
         }
     }
