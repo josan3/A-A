@@ -1,4 +1,4 @@
-package org.sample
+package app
 
 import kotlin.test.*
 import java.io.IOException
