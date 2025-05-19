@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'jetbrains/kotlin:1.9.0-jdk17'
+            image 'zenika/kotlin'
         }
     }
 
