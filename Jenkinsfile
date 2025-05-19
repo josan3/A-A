@@ -1,43 +1,22 @@
 pipeline {
     agent any
 
-    environment {
-        KOTLIN_VERSION = '1.9.0'
-    }
-
     stages {
-        stage('Setup Kotlin') {
+        stage('Checkout') {
             steps {
-                sh '''
-                rm -rf kotlin
-                curl -s -L -o kotlin.zip https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip
-                unzip -oq kotlin.zip -d kotlin
-                '''
+                checkout scm
             }
         }
-
-        stage('Compile Kotlin') {
+        stage('Build and Test') {
             steps {
-                sh '''
-                export PATH=$WORKSPACE/kotlin/kotlinc/bin:$PATH
-                kotlinc MainApp.kt -include-runtime -d app.jar
-                '''
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                sh '''
-                export PATH=$WORKSPACE/kotlin/kotlinc/bin:$PATH
-                java -jar app.jar
-                '''
+                sh './gradlew clean test'
             }
         }
     }
 
     post {
         always {
-            echo 'Pipeline finished.'
+            junit 'build/test-results/test/*.xml'
         }
     }
 }
