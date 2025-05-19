@@ -9,14 +9,15 @@ pipeline {
         }
         stage('Build and Test') {
             steps {
-                sh './gradlew clean test'
+                bat 'gradlew.bat clean test'
             }
         }
     }
 
     post {
         always {
-            junit 'build/test-results/test/*.xml'
+            junit '**\\build\\test-results\\test\\*.xml'
         }
     }
 }
+
