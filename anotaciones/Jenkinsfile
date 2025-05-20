@@ -39,19 +39,15 @@ pipeline {
 
         stage('Ejecutar Tests') {
             steps {
-                sh '''
-                dotnet test anotaciones/test_csharp/test.csproj \
-                --logger "junit;LogFilePath=TestResults/test_results.xml" \
-                --verbosity normal
-                '''
+                sh 'dotnet test anotaciones/test_csharp/test.csproj --logger trx;LogFileName=test_results.trx'
             }
         }
 
-
         stage('Publicar resultados de test') {
             steps {
-                echo 'Publicando resultados de test en formato JUnit...'
-                junit 'TestResults/test_results.xml'
+                // Necesitas convertir .trx a .xml compatible con JUnit si Jenkins no lo acepta directamente
+                // Pero algunos plugins recientes ya aceptan .trx directamente
+                junit 'anotaciones/test_csharp/TestResults/test_results.trx'
             }
         }
 
