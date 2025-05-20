@@ -43,11 +43,18 @@ pipeline {
             }
         }
 
+         stage('Convertir TRX a JUnit XML') {
+            steps {
+                // Instala trx2junit si no está disponible
+                sh 'dotnet tool install -g trx2junit || true'
+                // Convierte el archivo TRX generado
+                sh 'trx2junit anotaciones/test_csharp/TestResults/test_results.trx'
+            }
+        }
+
         stage('Publicar resultados de test') {
             steps {
-                // Necesitas convertir .trx a .xml compatible con JUnit si Jenkins no lo acepta directamente
-                // Pero algunos plugins recientes ya aceptan .trx directamente
-                junit 'anotaciones/test_csharp/TestResults/test_results.trx'
+                junit 'anotaciones/test_csharp/TestResults/test_results.xml'
             }
         }
 
