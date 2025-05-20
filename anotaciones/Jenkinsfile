@@ -25,20 +25,20 @@ pipeline {
 
         stage('Restaurar dependencias') {
             steps {
-                sh 'dotnet restore main.csproj'
-                sh 'dotnet restore tests.csproj'
+                sh 'dotnet restore anotaciones/main.csproj'
+                sh 'dotnet restore anotaciones/tests.csproj'
             }
         }
 
         stage('Compilar') {
             steps {
-                sh 'dotnet build main.csproj --configuration Release'
+                sh 'dotnet build anotaciones/main.csproj --configuration Release'
             }
         }
 
         stage('Ejecutar Tests') {
             steps {
-                sh 'dotnet test test.csproj --configuration Release --logger "trx;LogFileName=test-results.trx"'
+                sh 'dotnet test anotaciones/test.csproj --configuration Release --logger "trx;LogFileName=test-results.trx"'
             }
 }
 
