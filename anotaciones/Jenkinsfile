@@ -39,7 +39,7 @@ pipeline {
 
         stage('Ejecutar Tests') {
             steps {
-               sh 'dotnet test anotaciones/test_csharp/test.csproj --no-build --verbosity normal'
+               sh 'dotnet test anotaciones/test_csharp/test.csproj --verbosity normal'
             }
 }
 
