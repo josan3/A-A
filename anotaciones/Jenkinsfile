@@ -32,13 +32,14 @@ pipeline {
 
         stage('Compilar') {
             steps {
-                sh 'dotnet build anotaciones/main.csproj --configuration Release'
+                  sh 'dotnet build anotaciones/main.csproj --configuration Release'
+                  sh 'dotnet build anotaciones/test.csproj --configuration Release'
             }
         }
 
         stage('Ejecutar Tests') {
             steps {
-                sh 'dotnet test anotaciones/test.csproj --configuration Release --logger "trx;LogFileName=test-results.trx"'
+               sh 'dotnet test anotaciones/test.csproj --no-build --verbosity normal'
             }
 }
 
