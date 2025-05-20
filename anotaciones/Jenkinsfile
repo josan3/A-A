@@ -26,14 +26,14 @@ pipeline {
         stage('Restaurar dependencias') {
             steps {
                 sh 'dotnet restore anotaciones/anotaciones_csharp/main.csproj'
-                sh 'dotnet restore anotaciones/test_csharptest.csproj'
+                sh 'dotnet restore anotaciones/test_csharp/test.csproj'
             }
         }
 
         stage('Compilar') {
             steps {
                   sh 'dotnet build anotaciones/anotaciones_csharp/main.csproj --configuration Release'
-                  sh 'dotnet build anotaciones/test_csharptest.csproj --configuration Release'
+                  sh 'dotnet build anotaciones/test_csharp/test.csproj --configuration Release'
             }
         }
 
