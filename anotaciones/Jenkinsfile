@@ -49,7 +49,8 @@ pipeline {
                 // Instala trx2junit si no está disponible
                 sh 'dotnet tool install -g trx2junit || true'
 
-               sh '/root/.dotnet/tools/trx2junit anotaciones/test_csharp/TestResults/test_results.trx'
+                sh '/root/.dotnet/tools/trx2junit anotaciones/test_csharp/TestResults/*.trx'
+
 
                 // Convierte el archivo TRX generado
                 sh 'trx2junit anotaciones/test_csharp/TestResults/test_results.trx'
