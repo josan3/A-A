@@ -21,7 +21,7 @@ class MainTest {
     @Test
     fun testOutOfBoundsAccess() {
         assertFailsWith<IndexOutOfBoundsException> {
-            accessElement(10)
+            accessElement(15)
         }
     }
 
