@@ -41,7 +41,3 @@ fun riskyOperation(value: Int): Int {
     return 0 + value
     }
 }
-
-fun main() {
-
-}
