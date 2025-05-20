@@ -2,6 +2,8 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Collections.Generic;
+using NUnit.Framework;
+
 
 // Atributo personalizado para validar el salario
 [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
