@@ -7,7 +7,7 @@ class MainTest {
 
     @Test
     fun testGreetingIsNotNull() {
-        assertNotNull(MainApp().intro)
+        assertNotNull(MainApp().intro, "app tiene un saludo")
     }
 
     @Test
