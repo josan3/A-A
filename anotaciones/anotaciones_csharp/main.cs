@@ -57,3 +57,48 @@ public class Empresa
     public List<Trabajador> Empleados { get; set; } = new List<Trabajador>();
 }
 
+// Programa principal
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Ejemplo 1: Validación de Salario Correcta");
+        var trabajadorValido = new Trabajador { Nombre = "Ana", Salario = 3500m };
+        try
+        {
+            trabajadorValido.Validar();
+            Console.WriteLine("Validación exitosa para Ana.");
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+
+        Console.WriteLine("\nEjemplo 2: Validación de Salario Incorrecta");
+        var trabajadorInvalido = new Trabajador { Nombre = "Carlos", Salario = 500m };
+        try
+        {
+            trabajadorInvalido.Validar();
+            Console.WriteLine("Validación exitosa para Carlos.");
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            Console.WriteLine($"Error: {ex.Message}");
+        }
+
+        Console.WriteLine("\nEjemplo 3: Serialización JSON de Empresa");
+        var empresa = new Empresa
+        {
+            Nombre = "Tech Solutions",
+            Ubicacion = "Madrid",
+            Empleados = new List<Trabajador>
+            {
+                new Trabajador { Nombre = "Ana", Salario = 3500m },
+                new Trabajador { Nombre = "Luis", Salario = 4200m }
+            }
+        };
+
+        string json = JsonSerializer.Serialize(empresa, new JsonSerializerOptions { WriteIndented = true });
+        Console.WriteLine(json);
+    }
+}

@@ -25,21 +25,21 @@ pipeline {
 
         stage('Restaurar dependencias') {
             steps {
-                sh 'dotnet restore anotaciones/main.csproj'
-                sh 'dotnet restore anotaciones/test.csproj'
+                sh 'dotnet restore anotaciones/anotaciones_csharp/main.csproj'
+                sh 'dotnet restore anotaciones/test_csharptest.csproj'
             }
         }
 
         stage('Compilar') {
             steps {
-                  sh 'dotnet build anotaciones/main.csproj --configuration Release'
-                  sh 'dotnet build anotaciones/test.csproj --configuration Release'
+                  sh 'dotnet build anotaciones/anotaciones_csharp/main.csproj --configuration Release'
+                  sh 'dotnet build anotaciones/test_csharptest.csproj --configuration Release'
             }
         }
 
         stage('Ejecutar Tests') {
             steps {
-               sh 'dotnet test anotaciones/test.csproj --no-build --verbosity normal'
+               sh 'dotnet test anotaciones/test_csharp/test.csproj --no-build --verbosity normal'
             }
 }
 
