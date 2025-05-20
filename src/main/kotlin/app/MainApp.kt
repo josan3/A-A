@@ -22,7 +22,7 @@ fun parseInteger(input: String): Int {
 
 fun accessElement(index: Int): Int {
     val data = listOf(10, 20, 30)
-    println(data[5])
+    return data[5]
 }
 
 fun readConfig(path: String): String {
