@@ -56,7 +56,7 @@ pipeline {
 
         stage('Publicar resultados de test') {
             steps {
-                junit 'anotaciones/test_csharp/TestResults/test_results.xml'
+                junit 'anotaciones/test_csharp/TestResults/*.xml'
             }
         }
     }
