@@ -6,7 +6,7 @@ Bienvenido a este repositorio donde explicaremos y mostraremos los conceptos de 
 ## Estructura de Directorio
 - `/README.md`: Archivo actual, donde explicaremos los conceptos y mostraremos los pasos a seguir para comprobar el funcionamiento del ejemplo.
 - `/kotlin/src/main/kotlin/app/MainApp.kt`: Archivo Kotlin donde se encuentra el código de ejemplo.
-- `/build.gradle`: Archvio de configuración de Gradle para manejar dependencias y otras configuraciones.
+- `/build.gradle` y `/settings.gradle.kts`: Archivos de configuración de Gradle para manejar dependencias y otras configuraciones.
 - `/kotlin/src/main/kotlin/app/test.kt`: Archivo Kotlin donde se encuentran las pruebas unitarias.
 - `/Jenkinsfile`: Configuración del pipeline para la comprobación automática del funcionamiento del código.
 
@@ -364,5 +364,5 @@ Una vez realizados los pasos anteriores, abrimos Jenkins y creamos un nuevo Pipe
 
 Y con esta configuración hemos creado el pipeline necesario para la ejecución de los test
 
-### 2. Ejecutar los Tests
+### 3. Ejecutar los Tests
 Una vez creado el pipeline, ejecutamos dando a `Construir ahora` y el propion Jenkins pasará los test automaticamente.
