@@ -25,24 +25,22 @@ pipeline {
 
         stage('Restaurar dependencias') {
             steps {
-                echo 'Restaurando dependencias con dotnet restore...'
-                sh 'dotnet restore'
+                sh 'dotnet restore main.csproj'
+                sh 'dotnet restore tests.csproj'
             }
         }
 
         stage('Compilar') {
             steps {
-                echo 'Compilando solución...'
-                sh 'dotnet build --configuration Release --no-restore'
+                sh 'dotnet build main.csproj --configuration Release'
             }
         }
 
         stage('Ejecutar Tests') {
             steps {
-                echo 'Ejecutando pruebas NUnit...'
-                sh 'dotnet test --configuration Release --no-build --logger "trx;LogFileName=test_results.trx" --results-directory TestResults'
+                sh 'dotnet test test.csproj --configuration Release --logger "trx;LogFileName=test-results.trx"'
             }
-        }
+}
 
         stage('Publicar resultados de test') {
             steps {
