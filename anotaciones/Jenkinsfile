@@ -26,34 +26,33 @@ pipeline {
 
         stage('Restaurar dependencias') {
             steps {
-                sh 'dotnet restore anotaciones/anotaciones_csharp/main2.csproj'
-                sh 'dotnet restore anotaciones/test_csharp/test2.csproj'
+                sh 'dotnet restore anotaciones/anotaciones_csharp/main.csproj'
+                sh 'dotnet restore anotaciones/test_csharp/test.csproj'
             }
         }
 
         stage('Compilar') {
             steps {
-                sh 'dotnet build anotaciones/anotaciones_csharp/main2.csproj --configuration Release'
-                sh 'dotnet build anotaciones/test_csharp/test2.csproj --configuration Release'
+                sh 'dotnet build anotaciones/anotaciones_csharp/main.csproj --configuration Release'
+                sh 'dotnet build anotaciones/test_csharp/test.csproj --configuration Release'
             }
         }
 
         stage('Ejecutar Tests') {
             steps {
-                sh 'dotnet test anotaciones/test_csharp/test2.csproj --logger trx;LogFileName=test_results.trx'
+                sh 'dotnet test anotaciones/test_csharp/test.csproj --logger trx;LogFileName=test_results.trx'
             }
         }
 
         stage('Convertir TRX a JUnit XML') {
             steps {
-                sh '''
-                    dotnet tool install -g trx2junit || true
-                    export PATH="$HOME/.dotnet/tools:$PATH"
-                    trx2junit anotaciones/test_csharp/TestResults/*.trx
-                '''
+                // Instala trx2junit si no está disponible
+                sh 'dotnet tool install -g trx2junit || true'
+
+                sh '/root/.dotnet/tools/trx2junit anotaciones/test_csharp/TestResults/*.trx'
+
             }
         }
-
 
         stage('Publicar resultados de test') {
             steps {
