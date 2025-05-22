@@ -44,14 +44,16 @@ pipeline {
             }
         }
 
-        stage('Convertir TRX a JUnit XML') {
-            steps {
-                // Instala trx2junit si no está disponible
+stage('Convertir TRX a JUnit XML') {
+    steps {
+        // Instala trx2junit (si ya está instalado no falla)
         sh 'dotnet tool install -g trx2junit || true'
-        sh 'export PATH="$HOME/.dotnet/tools:$PATH" && trx2junit anotaciones/test_csharp/TestResults/*.trx'
 
-            }
-        }
+        // Ejecuta la conversión usando dotnet trx2junit directamente
+        sh 'dotnet trx2junit anotaciones/test_csharp/TestResults/*.trx'
+    }
+}
+
 
         stage('Publicar resultados de test') {
             steps {
