@@ -47,9 +47,8 @@ pipeline {
         stage('Convertir TRX a JUnit XML') {
             steps {
                 // Instala trx2junit si no está disponible
-                sh 'dotnet tool install -g trx2junit || true'
-
-                sh '/root/.dotnet/tools/trx2junit anotaciones/test_csharp/TestResults/*.trx'
+        sh 'dotnet tool install -g trx2junit || true'
+        sh 'export PATH="$HOME/.dotnet/tools:$PATH" && trx2junit anotaciones/test_csharp/TestResults/*.trx'
 
             }
         }
