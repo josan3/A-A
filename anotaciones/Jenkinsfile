@@ -49,8 +49,11 @@ stage('Convertir TRX a JUnit XML') {
         // Instala trx2junit (si ya está instalado no falla)
         sh 'dotnet tool install -g trx2junit || true'
 
-        // Ejecuta la conversión usando dotnet trx2junit directamente
-        sh 'dotnet trx2junit anotaciones/test_csharp/TestResults/*.trx'
+        // Añade la carpeta de herramientas dotnet al PATH en esta sesión y ejecuta trx2junit
+        sh '''
+            export PATH="$HOME/.dotnet/tools:$PATH"
+            trx2junit anotaciones/test_csharp/TestResults/*.trx
+        '''
     }
 }
 
